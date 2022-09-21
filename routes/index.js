@@ -11,18 +11,18 @@ router.get('/', function(req, res, next) {
 
 //Trouver tous les voyages en fonction du départ et de l'arrivée
 //IL FAUDRA AJOUTER LA DATE AVEC LE CALENDRIER
-router.get('/trips', (req, res) => {
+router.get('/trips/:departure/:arrival', (req, res) => {
+  const {departure, arrival}= req.params
   Trips.find({
-    departure: req.body.departure,
-    arrival: req.body.arrival
+    departure: departure,
+    arrival: arrival,
     //date: Date
   }).then(data => {
-
     res.json({ trips: data });
   })
 });
 
-//
+
 
 
 
